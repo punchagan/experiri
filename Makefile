@@ -105,7 +105,7 @@ define BENCH_DATA_3
       "name": "dune monorepo benchmarks",
       "metrics": [
 	{
-	  "name": "build from scratch",
+	  "name": "new build from scratch",
 	  "lines": [
 	    [
 	      11914,
