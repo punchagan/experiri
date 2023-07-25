@@ -249,7 +249,8 @@ export BENCH_DATA_1
 export BENCH_DATA_2
 export BENCH_DATA_3
 bench:
+	@sleep 30
 	@echo "$$BENCH_DATA_3"
 
 update:
-	date >> content/posts/new3.md; git add content/posts/new3.md; git commit -m "New commit $(date)"; git push origin $(git branch --show-current --no-color)
+	date >> content/posts/new3.md; git add content/posts/new3.md; git commit -m "New commit $(date)"; git push origin $$(git branch --show-current --no-color)
