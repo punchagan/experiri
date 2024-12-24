@@ -1,0 +1,553 @@
+#+TITLE: Taani's Birthday Quiz!
+#+AUTHOR:
+#+DATE: 🎉🥳🎂
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_TRANS: fade
+#+REVEAL_HLEVEL: 2
+#+OPTIONS: reveal_center:t reveal_slideNumber:t toc:nil author:nil num:nil created:nil timestamp:nil
+
+* COMMENT Setup Code
+
+"#ff6f61", "#6b5b95", "#feb236", "#d64161", "#ff7b25",
+"#88b04b", "#92a8d1", "#f7cac9", "#f4a698", "#c94c4c",
+"#ffcc5c", "#96ceb4", "#ffeead", "#88d8b0", "#ff6f91",
+"#845ec2", "#d65db1", "#ff9671", "#ffc75f", "#f9f871",
+"#d6a7e1", "#a9def9", "#fcf6bd", "#e0bbe4", "#fdfd96",
+"#77dd77", "#836953", "#779ecb", "#ffb347", "#ff6961"
+
+#+begin_src emacs-lisp
+(defun pc/cycle-slide-colors ()
+  "Cycle through 4 colors for Org Reveal slides using Org headlines.
+   Applies the same color to a 'Question' and its corresponding 'Answer' headline."
+  (interactive)
+  (let ((colors '("#ff6f61" "#d6a7e1" "#feb236" "#88b04b"))
+        (color-index 0))
+    (save-excursion
+      (org-element-map (org-element-parse-buffer 'headline) 'headline
+        (lambda (headline)
+          (let ((title (org-element-property :raw-value headline)))
+            (when (and title (or (string-match-p "^Question" title)(string-match-p "^Answer" title)))
+              ;; Set the color for the Question slide
+              (org-entry-put (org-element-property :begin headline) "REVEAL_BACKGROUND"
+                             (nth color-index colors))
+              (when (string-match-p "^Answer" title)
+                (setq color-index (mod (1+ color-index) (length colors)))))))))))
+
+
+#+end_src
+
+* Harry Potter Quiz!
+
+ ✨ 🪄 ✨
+
+** Question 1
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+#+begin_verse
+I see your mind, your courage, your fears,
+I choose your place for the rest of your years.
+
+Who am I?
+#+end_verse
+
+*** Answer 1
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+*Sorting Hat*
+
+** Question 2
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+#+begin_verse
+The secret to life, the key to gold,
+Hidden away and guarded by the bold.
+
+What am I?
+#+end_verse
+
+*** Answer 2
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Philosopher’s Stone*
+
+** Question 3
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+#+begin_verse
+I haunt the pipes, my death was a fright
+Beware the eyes that give a terrible bite.
+
+Who am I?
+#+end_verse
+
+*** Answer 3
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+*Moaning Myrtle*
+
+** Question 4
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+#+begin_verse
+I’m brewed with care, a month at least,
+To take the form of human or beast.
+
+What am I?
+#+end_verse
+
+*** Answer 4
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+*Polyjuice Potion*
+** Question 5
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+#+begin_verse
+Hatched by Hagrid, though I was feared,
+My children live where no one’s neared.
+
+Who am I?
+#+end_verse
+
+*** Answer 5
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+*Aragog*
+** Question 6
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+#+begin_verse
+Chaos is my calling, I’m always unseen,
+In Hogwarts halls, I reign as prank king.
+
+Who am I?
+#+end_verse
+
+*** Answer 6
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Peeves*
+** Question 7
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+#+begin_verse
+Delivered by owl, I’ll give you a fright,
+When I start to yell, you’ll want to take flight.
+
+What am I?
+#+end_verse
+
+*** Answer 7
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+*The Howler*
+
+** Question 8
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+#+begin_verse
+I guard the secret, I’m fierce but sweet,
+A tune can put me to sleep.
+
+Who am I?
+#+end_verse
+
+*** Answer 8
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+*Fluffy*
+
+** Question 9
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+#+begin_verse
+I see it all, I show the way,
+But swear you’re up to no good today.
+
+What am I?
+#+end_verse
+
+*** Answer 9
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+*The Marauder's Map*
+
+** Question 10
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+#+begin_verse
+I appear when you’re in need,
+A space for rest or daring deeds.
+
+What am I?
+#+end_verse
+
+*** Answer 10
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Room of Requirement*
+
+** Question 11
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+#+begin_verse
+Born of fire, I rise anew,
+My song inspires the brave and true.
+
+Who am I?
+#+end_verse
+
+*** Answer 11
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+
+*Fawkes*
+
+** Question 12
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+#+begin_verse
+Half horse, half bird, I soar through skies,
+Respect me first, or face my cries.
+
+Who am I?
+#+end_verse
+
+*** Answer 12
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+*Buckbeak*
+
+** Question 13
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+#+begin_verse
+I take the shape of what you fear,
+A simple spell will make me disappear.
+
+Who am I?
+#+end_verse
+
+*** Answer 13
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+*Boggart*
+
+** Question 14
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+#+begin_verse
+Loyal and white, I deliver with grace,
+Through storm and battle, I kept my place.
+
+Who am I?
+#+end_verse
+
+*** Answer 14
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Hedwig*
+
+** Question 15
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+#+begin_verse
+I played the villain to protect the light,
+With love and loss, I fought my fight.
+
+Who am I?
+#+end_verse
+
+*** Answer 15
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+*Severus Snape*
+
+** Question 16
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+#+begin_verse
+With a magical eye, I see through walls,
+Though imposters sometimes answer my calls.
+
+Who am I?
+#+end_verse
+
+*** Answer 16
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+*Alastor 'Mad-Eye' Moody*
+
+* Riddle Me This: The Ultimate Character Challenge
+
+🔔🎈🎊🍰
+
+** Question 1
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+#+begin_verse
+I’m the leader, my color is pink,
+I plan our missions and always think.
+
+Who am I?
+#+end_verse
+
+*** Answer 1
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+*Blossom*
+
+** Question 2
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+#+begin_verse
+With tricks and lies, I play my game,
+A god of mischief, I seek my fame.
+
+Who am I?
+#+end_verse
+*** Answer 2
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+*Loki*
+** Question 3
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+#+begin_verse
+I lose my glasses but never my clue,
+I’m the brainy one in our mystery solving crew.
+
+Who am I?
+#+end_verse
+
+*** Answer 3
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+*Velma*
+
+** Question 4
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+#+begin_verse
+Born a prince, but second in line,
+My envy grew with every sign.
+With a cunning plan, I claimed the throne,
+But lost it all, left to roam alone.
+
+
+Who am I?
+#+end_verse
+
+*** Answer 4
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+*Scar*
+
+** Question 5
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+#+begin_verse
+With a lasso of truth and Amazonian might,
+I fight for peace and what is right.
+
+Who am I?
+#+end_verse
+
+*** Answer 5
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+*Wonder Woman*
+
+** Question 6
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+#+begin_verse
+I started as a villain, but my heart turned good,
+My girls and "friends" changed my mood.
+
+Who am I?
+#+end_verse
+
+*** Answer 6
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Gru*
+
+** Question 7
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+#+begin_verse
+I love snacks and solving crime,
+But I’m always scared when it’s monster time.
+
+Who am I?
+#+end_verse
+
+*** Answer 7
+:PROPERTIES:
+:REVEAL_BACKGROUND: #feb236
+:END:
+*Scooby-Doo*
+
+** Question 8
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+#+begin_verse
+I’m the tough one, my color is green,
+Fighting bad guys is my scene.
+
+Who am I?
+#+end_verse
+
+*** Answer 8
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+
+*Buttercup*
+
+** Question 9
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+#+begin_verse
+Born with a gift I tried to hide,
+My icy touch, a storm inside.
+I built a castle far away,
+But love melted my fears that day.
+
+Who am I?
+#+end_verse
+
+*** Answer 9
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+*Elsa*
+
+** Question 10
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+#+begin_verse
+I wear a helmet to cover my brain,
+I’m always plotting, though I rarely gain.
+
+Who am I?
+#+end_verse
+
+*** Answer 10
+:PROPERTIES:
+:REVEAL_BACKGROUND: #d6a7e1
+:END:
+
+*Mojo Jojo*
+
+** Question 11
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+#+begin_verse
+I was once a cub, but now I’m the king,
+My roar echoes as the savanna sings.
+
+Who am I?
+#+end_verse
+
+*** Answer 11
+:PROPERTIES:
+:REVEAL_BACKGROUND: #88b04b
+:END:
+*Simba*
+
+** Question 12
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+#+begin_verse
+I’m sweet and kind, with hair so light,
+But don’t underestimate my fight.
+
+Who am I?
+#+end_verse
+
+*** Answer 12
+:PROPERTIES:
+:REVEAL_BACKGROUND: #ff6f61
+:END:
+
+*Bubbles*
