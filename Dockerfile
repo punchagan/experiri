@@ -8,7 +8,7 @@ ENV APP=$HOME/app
 USER user
 
 WORKDIR /home/user/notebooks
-COPY --chown=user:user . .
+COPY --chown=user:user requirements.txt .
 
 # Install Jupyter and other dependencies for running the notebook server
 # Add .local/bin to PATH
@@ -16,6 +16,7 @@ ENV PATH="/home/user/.local/bin:${PATH}"
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Setup Jupyter kernels for different environments for each notebook
+COPY --chown=user:user . .
 RUN scripts/setup-kernels.sh
 
 EXPOSE 8888
