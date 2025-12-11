@@ -2,11 +2,11 @@ app = "experiri"
 primary_region = "ams"
 
 [http_service]
+auto_stop_machines = "stop"
 auto_start_machines = true
-auto_stop_machines = true
+min_machines_running = 0
 force_https = true
 internal_port = 8_888
-min_machines_running = 0
 processes = [ "app" ]
 
 [[vm]]
